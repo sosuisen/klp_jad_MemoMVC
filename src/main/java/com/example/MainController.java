@@ -3,6 +3,7 @@ package com.example;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 public class MainController {
     @FXML
@@ -13,6 +14,9 @@ public class MainController {
     
     @FXML
     private Button clearBtn;
+    
+    @FXML
+    private TextField titleField;
 
     private Model model;
     
@@ -23,7 +27,9 @@ public class MainController {
     	this.model = model;
     	
     	// Bind Model to View
-		textArea.textProperty().bindBidirectional(model.text);
+		textArea.textProperty().bindBidirectional(model.bodyText);
+		
+		titleField.textProperty().bindBidirectional(model.titleText);
 		
 		// Event Handler
 		saveButton.setOnAction(e -> {
@@ -32,7 +38,8 @@ public class MainController {
 		clearBtn.setOnAction(e -> {
 			model.clear();
 		});
-    }
+		
+    }   
     
 	public void initialize() {
 		// Write your initialization code here
